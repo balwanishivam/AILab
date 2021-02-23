@@ -7,7 +7,7 @@ from agent import Agent
 start = list(range(0,9))
 random.shuffle(start)
 print("start+>",start)
-instance=generate(start,9)
+instance=generate(start,30)
 print("goal+>",instance)
 
 start_node=Agent(start,0,None)

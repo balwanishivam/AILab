@@ -2,7 +2,7 @@ from queue import PriorityQueue
 import numpy as np
 from enviroment import next_move
 from queue import Queue
-class Agent:
+class Agent(object):
     def __init__(self, state,cost,parent):
         self.state = state
         self.cost = cost

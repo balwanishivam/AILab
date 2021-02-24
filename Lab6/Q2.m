@@ -6,24 +6,17 @@
 % Given T observation sequences 
 % Parameter learning using Expectation maximization
 %
-% Reference: What is expectation maximization algorithm? Chuong B Do and Serafim Batzoglou, Nature Biotechnology, Vol 26, Num 8, Aug 2008
-
+% Reference: What is expectation maximization algorithm? 
+%Chuong B Do and Serafim Batzoglou, Nature Biotechnology,
+% Vol 26, Num 8, Aug 2008
+clc;
 clear all;
 close all;
-
-%y=csvread("two_bent_coins.csv");
 y=csvread("2020_ten_bent_coins.csv");
-
-% True Parameters
-% theta = [.2 .5];
+# initial theta
 theta=rand(1,10);
-disp(size(theta));
-##theta1 = [.2 .5];
-##disp(size(theta1));
-##
 h = sum(y,2); t = 100-h;
 th(1,:) = theta;
-#
 for n=2:500
 LH=zeros(size(h));
 for k=1:10
@@ -37,4 +30,5 @@ end
 disp("Initial Theta");
 disp(theta);
 disp("New Theta");
-disp(th(500,:));
+final=th(500,:)
+disp(final);

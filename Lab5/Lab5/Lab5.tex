@@ -1,0 +1,947 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Week-5},
+  pdfauthor={QuickFixDemos},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Week-5}
+\author{QuickFixDemos}
+\date{}
+
+\begin{document}
+\maketitle
+
+Packages Used Installation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("e1071") }
+\CommentTok{\# install.packages("caTools") }
+\CommentTok{\# install.packages("caret") }
+\CommentTok{\# install.packages("bnlearn")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(bnlearn)}
+\FunctionTok{library}\NormalTok{(e1071) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'e1071'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:bnlearn':
+## 
+##     impute
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(caTools) }
+\FunctionTok{library}\NormalTok{(caret) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: ggplot2
+\end{verbatim}
+
+Lab Assignment 5
+
+Learning Objective: Understand the graphical models for inference under
+uncertainty, build Bayesian Network in R, Learn the structure and CPTs
+from Data, naive Bayes classification with dependency between features.
+Problem Statement: A table containing grades earned by students in
+respective courses is made available to you in (codes folder)
+2020\_bn\_nb\_data.txt. Q1: Consider grades earned in each of the
+courses as random variables and learn the dependencies between courses.
+\#\#Solution
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset}\OtherTok{\textless{}{-}}\FunctionTok{read.table}\NormalTok{(}\StringTok{"C:/Users/shiva/OneDrive/Desktop/Semester{-}6/AILab/Lab5/2020\_bn\_nb\_data.txt"}\NormalTok{,}\AttributeTok{head=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{stringsAsFactors=}\ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{dataset\_grades}\OtherTok{=}\NormalTok{dataset}
+\NormalTok{dataset\_grades}\OtherTok{=} \FunctionTok{subset}\NormalTok{(dataset\_grades, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(QP) )}
+\NormalTok{dataset\_net}\OtherTok{\textless{}{-}}\FunctionTok{hc}\NormalTok{(dataset\_grades,}\AttributeTok{score=}\StringTok{"k2"}\NormalTok{)}
+\NormalTok{dataset\_net}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   Bayesian network learned via Score-based methods
+## 
+##   model:
+##    [IT161][IT101|IT161][MA101|IT101][HS101|IT101][EC100|MA101][PH160|HS101]
+##    [EC160|EC100][PH100|EC100]
+##   nodes:                                 8 
+##   arcs:                                  7 
+##     undirected arcs:                     0 
+##     directed arcs:                       7 
+##   average markov blanket size:           1.75 
+##   average neighbourhood size:            1.75 
+##   average branching factor:              0.88 
+## 
+##   learning algorithm:                    Hill-Climbing 
+##   score:                                 Cooper & Herskovits' K2 
+##   tests used in the learning procedure:  105 
+##   optimized:                             TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(dataset\_net)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Lab5_files/figure-latex/unnamed-chunk-3-1.pdf} Q2:
+Using the data, learn the CPTs for each course node.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset\_net\_bn\_fit }\OtherTok{\textless{}{-}} \FunctionTok{bn.fit}\NormalTok{(dataset\_net, dataset\_grades )}
+\FunctionTok{print}\NormalTok{(dataset\_net\_bn\_fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   Bayesian network parameters
+## 
+##   Parameters of node EC100 (multinomial distribution)
+## 
+## Conditional probability table:
+##  
+##      MA101
+## EC100         AA         AB         BB         BC         CC         CD
+##    AA 0.75000000 0.07692308 0.03846154 0.01851852 0.00000000 0.00000000
+##    AB 0.00000000 0.46153846 0.25000000 0.05555556 0.00000000 0.00000000
+##    BB 0.25000000 0.23076923 0.32692308 0.22222222 0.04081633 0.00000000
+##    BC 0.00000000 0.15384615 0.28846154 0.27777778 0.32653061 0.00000000
+##    CC 0.00000000 0.07692308 0.09615385 0.24074074 0.32653061 0.04166667
+##    CD 0.00000000 0.00000000 0.00000000 0.12962963 0.26530612 0.33333333
+##    DD 0.00000000 0.00000000 0.00000000 0.03703704 0.04081633 0.50000000
+##    F  0.00000000 0.00000000 0.00000000 0.01851852 0.00000000 0.12500000
+##      MA101
+## EC100         DD          F
+##    AA 0.00000000 0.00000000
+##    AB 0.00000000 0.00000000
+##    BB 0.00000000 0.00000000
+##    BC 0.00000000 0.00000000
+##    CC 0.00000000 0.00000000
+##    CD 0.04761905 0.00000000
+##    DD 0.19047619 0.00000000
+##    F  0.76190476 1.00000000
+## 
+##   Parameters of node EC160 (multinomial distribution)
+## 
+## Conditional probability table:
+##  
+##      EC100
+## EC160         AA         AB         BB         BC         CC         CD
+##    AA 0.42857143 0.22727273 0.05714286 0.04166667 0.00000000 0.00000000
+##    AB 0.42857143 0.22727273 0.08571429 0.04166667 0.08333333 0.00000000
+##    BB 0.14285714 0.31818182 0.20000000 0.22916667 0.08333333 0.03448276
+##    BC 0.00000000 0.22727273 0.42857143 0.43750000 0.36111111 0.17241379
+##    CC 0.00000000 0.00000000 0.22857143 0.25000000 0.30555556 0.34482759
+##    CD 0.00000000 0.00000000 0.00000000 0.00000000 0.11111111 0.27586207
+##    DD 0.00000000 0.00000000 0.00000000 0.00000000 0.05555556 0.17241379
+##    F  0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+##      EC100
+## EC160         DD          F
+##    AA 0.00000000 0.00000000
+##    AB 0.00000000 0.00000000
+##    BB 0.05000000 0.00000000
+##    BC 0.00000000 0.00000000
+##    CC 0.25000000 0.02857143
+##    CD 0.55000000 0.40000000
+##    DD 0.15000000 0.34285714
+##    F  0.00000000 0.22857143
+## 
+##   Parameters of node IT101 (multinomial distribution)
+## 
+## Conditional probability table:
+##  
+##      IT161
+## IT101         AA         AB         BB         BC         CC         CD
+##    AA 0.35000000 0.08000000 0.05714286 0.02040816 0.00000000 0.00000000
+##    AB 0.30000000 0.40000000 0.17142857 0.02040816 0.02380952 0.02857143
+##    BB 0.25000000 0.40000000 0.31428571 0.14285714 0.00000000 0.02857143
+##    BC 0.10000000 0.04000000 0.28571429 0.36734694 0.28571429 0.14285714
+##    CC 0.00000000 0.08000000 0.14285714 0.32653061 0.33333333 0.11428571
+##    CD 0.00000000 0.00000000 0.02857143 0.12244898 0.26190476 0.31428571
+##    DD 0.00000000 0.00000000 0.00000000 0.00000000 0.04761905 0.34285714
+##    F  0.00000000 0.00000000 0.00000000 0.00000000 0.04761905 0.02857143
+##      IT161
+## IT101         DD          F
+##    AA 0.00000000 0.00000000
+##    AB 0.00000000 0.00000000
+##    BB 0.00000000 0.00000000
+##    BC 0.04347826 0.00000000
+##    CC 0.04347826 0.00000000
+##    CD 0.21739130 0.33333333
+##    DD 0.39130435 0.00000000
+##    F  0.30434783 0.66666667
+## 
+##   Parameters of node IT161 (multinomial distribution)
+## 
+## Conditional probability table:
+##          AA         AB         BB         BC         CC         CD         DD 
+## 0.08620690 0.10775862 0.15086207 0.21120690 0.18103448 0.15086207 0.09913793 
+##          F 
+## 0.01293103 
+## 
+##   Parameters of node MA101 (multinomial distribution)
+## 
+## Conditional probability table:
+##  
+##      IT101
+## MA101         AA         AB         BB         BC         CC         CD
+##    AA 0.16666667 0.04000000 0.00000000 0.00000000 0.02380952 0.00000000
+##    AB 0.25000000 0.20000000 0.02941176 0.08163265 0.00000000 0.00000000
+##    BB 0.33333333 0.56000000 0.38235294 0.22448980 0.19047619 0.05714286
+##    BC 0.16666667 0.16000000 0.29411765 0.36734694 0.23809524 0.22857143
+##    CC 0.08333333 0.00000000 0.20588235 0.28571429 0.35714286 0.31428571
+##    CD 0.00000000 0.04000000 0.08823529 0.02040816 0.16666667 0.11428571
+##    DD 0.00000000 0.00000000 0.00000000 0.02040816 0.02380952 0.22857143
+##    F  0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.05714286
+##      IT101
+## MA101         DD          F
+##    AA 0.00000000 0.00000000
+##    AB 0.00000000 0.00000000
+##    BB 0.00000000 0.00000000
+##    BC 0.08695652 0.00000000
+##    CC 0.04347826 0.00000000
+##    CD 0.30434783 0.08333333
+##    DD 0.39130435 0.16666667
+##    F  0.17391304 0.75000000
+## 
+##   Parameters of node PH100 (multinomial distribution)
+## 
+## Conditional probability table:
+##  
+##      EC100
+## PH100         AA         AB         BB         BC         CC         CD
+##    AA 0.71428571 0.40909091 0.22857143 0.08333333 0.00000000 0.00000000
+##    AB 0.14285714 0.31818182 0.20000000 0.18750000 0.05555556 0.00000000
+##    BB 0.00000000 0.18181818 0.31428571 0.29166667 0.13888889 0.03448276
+##    BC 0.14285714 0.04545455 0.14285714 0.22916667 0.33333333 0.13793103
+##    CC 0.00000000 0.04545455 0.11428571 0.18750000 0.25000000 0.41379310
+##    CD 0.00000000 0.00000000 0.00000000 0.02083333 0.19444444 0.31034483
+##    DD 0.00000000 0.00000000 0.00000000 0.00000000 0.02777778 0.10344828
+##    F  0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+##      EC100
+## PH100         DD          F
+##    AA 0.00000000 0.00000000
+##    AB 0.00000000 0.00000000
+##    BB 0.05000000 0.00000000
+##    BC 0.00000000 0.00000000
+##    CC 0.20000000 0.02857143
+##    CD 0.45000000 0.11428571
+##    DD 0.20000000 0.45714286
+##    F  0.10000000 0.40000000
+## 
+##   Parameters of node PH160 (multinomial distribution)
+## 
+## Conditional probability table:
+##  
+##      HS101
+## PH160         AA         AB         BB         BC         CC         CD
+##    AA 0.23809524 0.17647059 0.05000000 0.11111111 0.07692308 0.10000000
+##    AB 0.23809524 0.11764706 0.15000000 0.13888889 0.07692308 0.10000000
+##    BB 0.16666667 0.26470588 0.17500000 0.16666667 0.00000000 0.00000000
+##    BC 0.21428571 0.32352941 0.45000000 0.22222222 0.50000000 0.30000000
+##    CC 0.09523810 0.08823529 0.12500000 0.30555556 0.15384615 0.45000000
+##    CD 0.04761905 0.02941176 0.02500000 0.05555556 0.11538462 0.05000000
+##    DD 0.00000000 0.00000000 0.02500000 0.00000000 0.07692308 0.00000000
+##    F  0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+##      HS101
+## PH160         DD          F
+##    AA 0.03448276 0.00000000
+##    AB 0.10344828 0.00000000
+##    BB 0.00000000 0.20000000
+##    BC 0.10344828 0.00000000
+##    CC 0.24137931 0.00000000
+##    CD 0.37931034 0.00000000
+##    DD 0.13793103 0.40000000
+##    F  0.00000000 0.40000000
+## 
+##   Parameters of node HS101 (multinomial distribution)
+## 
+## Conditional probability table:
+##  
+##      IT101
+## HS101         AA         AB         BB         BC         CC         CD
+##    AA 0.58333333 0.56000000 0.32352941 0.10204082 0.07142857 0.05714286
+##    AB 0.33333333 0.24000000 0.11764706 0.22448980 0.14285714 0.08571429
+##    BB 0.00000000 0.12000000 0.26470588 0.26530612 0.26190476 0.11428571
+##    BC 0.08333333 0.08000000 0.08823529 0.24489796 0.23809524 0.20000000
+##    CC 0.00000000 0.00000000 0.11764706 0.12244898 0.14285714 0.11428571
+##    CD 0.00000000 0.00000000 0.05882353 0.02040816 0.14285714 0.20000000
+##    DD 0.00000000 0.00000000 0.02941176 0.02040816 0.00000000 0.22857143
+##    F  0.00000000 0.00000000 0.00000000 0.00000000 0.00000000 0.00000000
+##      IT101
+## HS101         DD          F
+##    AA 0.00000000 0.00000000
+##    AB 0.00000000 0.00000000
+##    BB 0.00000000 0.00000000
+##    BC 0.04347826 0.00000000
+##    CC 0.26086957 0.00000000
+##    CD 0.13043478 0.08333333
+##    DD 0.52173913 0.58333333
+##    F  0.04347826 0.33333333
+\end{verbatim}
+
+Q3: What grade will a student get in PH100 if he earns DD in EC100, CC
+in IT101 and CD in MA101.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grade\_list }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\StringTok{"AA"}\NormalTok{,}\StringTok{"AB"}\NormalTok{,}\StringTok{"BB"}\NormalTok{,}\StringTok{"BC"}\NormalTok{,}\StringTok{"CC"}\NormalTok{,}\StringTok{"CD"}\NormalTok{,}\StringTok{"DD"}\NormalTok{,}\StringTok{"F"}\NormalTok{)}
+\NormalTok{probability }\OtherTok{\textless{}{-}} \FloatTok{0.0}
+\NormalTok{result}\OtherTok{=}\StringTok{""}
+\ControlFlowTok{for}\NormalTok{(grade }\ControlFlowTok{in}\NormalTok{ grade\_list) \{}
+\NormalTok{  prob }\OtherTok{\textless{}{-}} \FunctionTok{cpquery}\NormalTok{(dataset\_net\_bn\_fit, }\AttributeTok{event =}\NormalTok{ (PH100}\SpecialCharTok{==}\NormalTok{ grade), }\AttributeTok{evidence =}\NormalTok{ (EC100}\SpecialCharTok{==}\StringTok{"DD"} \SpecialCharTok{\&}\NormalTok{ IT101}\SpecialCharTok{==}\StringTok{"CC"} \SpecialCharTok{\&}\NormalTok{ MA101}\SpecialCharTok{==}\StringTok{"CD"}\NormalTok{))}
+  \ControlFlowTok{if}\NormalTok{(probability}\SpecialCharTok{\textless{}}\NormalTok{prob)\{}
+\NormalTok{    probability}\OtherTok{=}\NormalTok{prob;}
+\NormalTok{    result}\OtherTok{=}\NormalTok{grade}
+\NormalTok{  \}}
+\NormalTok{\}}
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"The max probability of resultant grade is \%f"}\NormalTok{,probability)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "The max probability of resultant grade is 0.415929"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sprintf}\NormalTok{(}\StringTok{"The max grade obtained with given ecidence is \%s "}\NormalTok{,result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "The max grade obtained with given ecidence is CD "
+\end{verbatim}
+
+Q4(a): The last column in the data file indicates whether a student
+qualifies for an internship program or not. From the given data, take 70
+percent data for training and build a naive Bayes classifier
+(considering that the grades earned in different courses are independent
+of each other) which takes in the student's performance and returns the
+qualification status with a probability. Test your classifier on the
+remaining 30 percent data. Repeat this experiment for 20 random
+selection of training and testing data. Report results about the
+accuracy of your classifier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset\_grades}\OtherTok{=}\NormalTok{dataset}
+\NormalTok{split }\OtherTok{\textless{}{-}} \FunctionTok{sample.split}\NormalTok{(dataset\_grades, }\AttributeTok{SplitRatio =} \FloatTok{0.7}\NormalTok{) }
+\NormalTok{train }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataset\_grades, split }\SpecialCharTok{==} \StringTok{"TRUE"}\NormalTok{) }
+\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataset\_grades, split }\SpecialCharTok{==} \StringTok{"FALSE"}\NormalTok{) }
+\NormalTok{naive\_bayes\_classifier}\OtherTok{\textless{}{-}} \FunctionTok{naiveBayes}\NormalTok{(QP }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ train)}
+\NormalTok{y\_train}\OtherTok{=}\FunctionTok{predict}\NormalTok{(naive\_bayes\_classifier, }\AttributeTok{newdata =}\NormalTok{ train)}
+\NormalTok{y\_prediction }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(naive\_bayes\_classifier, }\AttributeTok{newdata =}\NormalTok{ test)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Train Accuracy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Train Accuracy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm\_train}\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{QP, y\_train)}
+\FunctionTok{confusionMatrix}\NormalTok{(cm\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##    y_train
+##       n   y
+##   n  46   1
+##   y   0 107
+##                                           
+##                Accuracy : 0.9935          
+##                  95% CI : (0.9644, 0.9998)
+##     No Information Rate : 0.7013          
+##     P-Value [Acc > NIR] : <2e-16          
+##                                           
+##                   Kappa : 0.9846          
+##                                           
+##  Mcnemar's Test P-Value : 1               
+##                                           
+##             Sensitivity : 1.0000          
+##             Specificity : 0.9907          
+##          Pos Pred Value : 0.9787          
+##          Neg Pred Value : 1.0000          
+##              Prevalence : 0.2987          
+##          Detection Rate : 0.2987          
+##    Detection Prevalence : 0.3052          
+##       Balanced Accuracy : 0.9954          
+##                                           
+##        'Positive' Class : n               
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Test Accuracy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Test Accuracy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm\_test }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{QP, y\_prediction)}
+\FunctionTok{confusionMatrix}\NormalTok{(cm\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##    y_prediction
+##      n  y
+##   n 22  3
+##   y  2 51
+##                                           
+##                Accuracy : 0.9359          
+##                  95% CI : (0.8567, 0.9789)
+##     No Information Rate : 0.6923          
+##     P-Value [Acc > NIR] : 1.499e-07       
+##                                           
+##                   Kappa : 0.8513          
+##                                           
+##  Mcnemar's Test P-Value : 1               
+##                                           
+##             Sensitivity : 0.9167          
+##             Specificity : 0.9444          
+##          Pos Pred Value : 0.8800          
+##          Neg Pred Value : 0.9623          
+##              Prevalence : 0.3077          
+##          Detection Rate : 0.2821          
+##    Detection Prevalence : 0.3205          
+##       Balanced Accuracy : 0.9306          
+##                                           
+##        'Positive' Class : n               
+## 
+\end{verbatim}
+
+Q4(b): Repeat this experiment for 20 random selection of training and
+testing data. Report results about the accuracy of your classifier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset\_grades}\OtherTok{=}\NormalTok{dataset}
+\NormalTok{dataset\_grades}\OtherTok{=}\NormalTok{dataset\_grades[}\FunctionTok{sample}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(dataset\_grades), }\DecValTok{20}\NormalTok{), ]}
+\NormalTok{split }\OtherTok{\textless{}{-}} \FunctionTok{sample.split}\NormalTok{(dataset\_grades, }\AttributeTok{SplitRatio =} \FloatTok{0.7}\NormalTok{) }
+\NormalTok{train }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataset\_grades, split }\SpecialCharTok{==} \StringTok{"TRUE"}\NormalTok{) }
+\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataset\_grades, split }\SpecialCharTok{==} \StringTok{"FALSE"}\NormalTok{)}
+\NormalTok{naive\_bayes\_classifier}\OtherTok{\textless{}{-}} \FunctionTok{naiveBayes}\NormalTok{(QP }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ train)}
+\NormalTok{y\_train}\OtherTok{=}\FunctionTok{predict}\NormalTok{(naive\_bayes\_classifier, }\AttributeTok{newdata =}\NormalTok{ train)}
+\NormalTok{y\_prediction }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(naive\_bayes\_classifier, }\AttributeTok{newdata =}\NormalTok{ test)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Train Accuracy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Train Accuracy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm\_train}\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{QP, y\_train)}
+\FunctionTok{confusionMatrix}\NormalTok{(cm\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##    y_train
+##     n y
+##   n 6 0
+##   y 0 7
+##                                      
+##                Accuracy : 1          
+##                  95% CI : (0.7529, 1)
+##     No Information Rate : 0.5385     
+##     P-Value [Acc > NIR] : 0.0003199  
+##                                      
+##                   Kappa : 1          
+##                                      
+##  Mcnemar's Test P-Value : NA         
+##                                      
+##             Sensitivity : 1.0000     
+##             Specificity : 1.0000     
+##          Pos Pred Value : 1.0000     
+##          Neg Pred Value : 1.0000     
+##              Prevalence : 0.4615     
+##          Detection Rate : 0.4615     
+##    Detection Prevalence : 0.4615     
+##       Balanced Accuracy : 1.0000     
+##                                      
+##        'Positive' Class : n          
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Test Accuracy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Test Accuracy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm\_test }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{QP, y\_prediction)}
+\FunctionTok{confusionMatrix}\NormalTok{(cm\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##    y_prediction
+##     n y
+##   n 2 0
+##   y 0 5
+##                                      
+##                Accuracy : 1          
+##                  95% CI : (0.5904, 1)
+##     No Information Rate : 0.7143     
+##     P-Value [Acc > NIR] : 0.09486    
+##                                      
+##                   Kappa : 1          
+##                                      
+##  Mcnemar's Test P-Value : NA         
+##                                      
+##             Sensitivity : 1.0000     
+##             Specificity : 1.0000     
+##          Pos Pred Value : 1.0000     
+##          Neg Pred Value : 1.0000     
+##              Prevalence : 0.2857     
+##          Detection Rate : 0.2857     
+##    Detection Prevalence : 0.2857     
+##       Balanced Accuracy : 1.0000     
+##                                      
+##        'Positive' Class : n          
+## 
+\end{verbatim}
+
+Q5(a): Repeat 4, considering that the grades earned in different courses
+may be dependent.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset\_grades}\OtherTok{=}\NormalTok{dataset}
+\NormalTok{split }\OtherTok{\textless{}{-}} \FunctionTok{sample.split}\NormalTok{(dataset\_grades, }\AttributeTok{SplitRatio =} \FloatTok{0.7}\NormalTok{) }
+\NormalTok{train }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataset\_grades, split }\SpecialCharTok{==} \StringTok{"TRUE"}\NormalTok{) }
+\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataset\_grades, split }\SpecialCharTok{==} \StringTok{"FALSE"}\NormalTok{) }
+\NormalTok{naive\_bayes\_classifier}\OtherTok{\textless{}{-}} \FunctionTok{bn.fit}\NormalTok{(}\FunctionTok{hc}\NormalTok{(train, }\AttributeTok{score=}\StringTok{"k2"}\NormalTok{), train)}
+\NormalTok{y\_train}\OtherTok{=}\FunctionTok{predict}\NormalTok{(naive\_bayes\_classifier,}\AttributeTok{node=}\StringTok{"QP"}\NormalTok{, }\AttributeTok{data =}\NormalTok{ train)}
+\NormalTok{y\_prediction }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(naive\_bayes\_classifier,}\AttributeTok{node=}\StringTok{"QP"}\NormalTok{, }\AttributeTok{data =}\NormalTok{ test)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Train Accuracy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Train Accuracy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm\_train}\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{QP, y\_train)}
+\FunctionTok{confusionMatrix}\NormalTok{(cm\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##    y_train
+##       n   y
+##   n  37  14
+##   y   1 103
+##                                           
+##                Accuracy : 0.9032          
+##                  95% CI : (0.8454, 0.9448)
+##     No Information Rate : 0.7548          
+##     P-Value [Acc > NIR] : 2.196e-06       
+##                                           
+##                   Kappa : 0.7656          
+##                                           
+##  Mcnemar's Test P-Value : 0.001946        
+##                                           
+##             Sensitivity : 0.9737          
+##             Specificity : 0.8803          
+##          Pos Pred Value : 0.7255          
+##          Neg Pred Value : 0.9904          
+##              Prevalence : 0.2452          
+##          Detection Rate : 0.2387          
+##    Detection Prevalence : 0.3290          
+##       Balanced Accuracy : 0.9270          
+##                                           
+##        'Positive' Class : n               
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Test Accuracy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Test Accuracy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm\_test }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{QP, y\_prediction)}
+\FunctionTok{confusionMatrix}\NormalTok{(cm\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##    y_prediction
+##      n  y
+##   n 17  4
+##   y  0 56
+##                                           
+##                Accuracy : 0.9481          
+##                  95% CI : (0.8723, 0.9857)
+##     No Information Rate : 0.7792          
+##     P-Value [Acc > NIR] : 4.841e-05       
+##                                           
+##                   Kappa : 0.8608          
+##                                           
+##  Mcnemar's Test P-Value : 0.1336          
+##                                           
+##             Sensitivity : 1.0000          
+##             Specificity : 0.9333          
+##          Pos Pred Value : 0.8095          
+##          Neg Pred Value : 1.0000          
+##              Prevalence : 0.2208          
+##          Detection Rate : 0.2208          
+##    Detection Prevalence : 0.2727          
+##       Balanced Accuracy : 0.9667          
+##                                           
+##        'Positive' Class : n               
+## 
+\end{verbatim}
+
+Q5(b): Repeat this experiment for 20 random selection of training and
+testing data. Report results about the accuracy of your classifier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset\_grades}\OtherTok{=}\NormalTok{dataset}
+\NormalTok{dataset\_grades}\OtherTok{=}\NormalTok{dataset\_grades[}\FunctionTok{sample}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(dataset\_grades), }\DecValTok{20}\NormalTok{), ]}
+\NormalTok{split }\OtherTok{\textless{}{-}} \FunctionTok{sample.split}\NormalTok{(dataset\_grades, }\AttributeTok{SplitRatio =} \FloatTok{0.7}\NormalTok{) }
+\NormalTok{train }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataset\_grades, split }\SpecialCharTok{==} \StringTok{"TRUE"}\NormalTok{) }
+\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(dataset\_grades, split }\SpecialCharTok{==} \StringTok{"FALSE"}\NormalTok{)}
+\NormalTok{naive\_bayes\_classifier}\OtherTok{\textless{}{-}} \FunctionTok{bn.fit}\NormalTok{(}\FunctionTok{hc}\NormalTok{(train, }\AttributeTok{score=}\StringTok{"k2"}\NormalTok{), train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in check.data(x): variable EC100 has levels that are not observed in the
+## data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(x): variable EC160 has levels that are not observed in the
+## data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(x): variable IT101 has levels that are not observed in the
+## data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(x): variable IT161 has levels that are not observed in the
+## data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(x): variable MA101 has levels that are not observed in the
+## data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(x): variable PH100 has levels that are not observed in the
+## data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(x): variable PH160 has levels that are not observed in the
+## data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(x): variable HS101 has levels that are not observed in the
+## data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(data, allow.missing = TRUE): variable EC100 has levels
+## that are not observed in the data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(data, allow.missing = TRUE): variable EC160 has levels
+## that are not observed in the data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(data, allow.missing = TRUE): variable IT101 has levels
+## that are not observed in the data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(data, allow.missing = TRUE): variable IT161 has levels
+## that are not observed in the data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(data, allow.missing = TRUE): variable MA101 has levels
+## that are not observed in the data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(data, allow.missing = TRUE): variable PH100 has levels
+## that are not observed in the data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(data, allow.missing = TRUE): variable PH160 has levels
+## that are not observed in the data.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in check.data(data, allow.missing = TRUE): variable HS101 has levels
+## that are not observed in the data.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y\_train}\OtherTok{=}\FunctionTok{predict}\NormalTok{(naive\_bayes\_classifier,}\AttributeTok{node=}\StringTok{"QP"}\NormalTok{, }\AttributeTok{data =}\NormalTok{ train)}
+\NormalTok{y\_prediction }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(naive\_bayes\_classifier,}\AttributeTok{node=}\StringTok{"QP"}\NormalTok{, }\AttributeTok{data =}\NormalTok{ test)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Train Accuracy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Train Accuracy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm\_train}\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{QP, y\_train)}
+\FunctionTok{confusionMatrix}\NormalTok{(cm\_train)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##    y_train
+##     n y
+##   n 4 0
+##   y 0 9
+##                                      
+##                Accuracy : 1          
+##                  95% CI : (0.7529, 1)
+##     No Information Rate : 0.6923     
+##     P-Value [Acc > NIR] : 0.008392   
+##                                      
+##                   Kappa : 1          
+##                                      
+##  Mcnemar's Test P-Value : NA         
+##                                      
+##             Sensitivity : 1.0000     
+##             Specificity : 1.0000     
+##          Pos Pred Value : 1.0000     
+##          Neg Pred Value : 1.0000     
+##              Prevalence : 0.3077     
+##          Detection Rate : 0.3077     
+##    Detection Prevalence : 0.3077     
+##       Balanced Accuracy : 1.0000     
+##                                      
+##        'Positive' Class : n          
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"Test Accuracy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Test Accuracy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cm\_test }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{QP, y\_prediction)}
+\FunctionTok{confusionMatrix}\NormalTok{(cm\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##    y_prediction
+##     n y
+##   n 2 0
+##   y 0 4
+##                                      
+##                Accuracy : 1          
+##                  95% CI : (0.5407, 1)
+##     No Information Rate : 0.6667     
+##     P-Value [Acc > NIR] : 0.08779    
+##                                      
+##                   Kappa : 1          
+##                                      
+##  Mcnemar's Test P-Value : NA         
+##                                      
+##             Sensitivity : 1.0000     
+##             Specificity : 1.0000     
+##          Pos Pred Value : 1.0000     
+##          Neg Pred Value : 1.0000     
+##              Prevalence : 0.3333     
+##          Detection Rate : 0.3333     
+##    Detection Prevalence : 0.3333     
+##       Balanced Accuracy : 1.0000     
+##                                      
+##        'Positive' Class : n          
+## 
+\end{verbatim}
+
+\end{document}

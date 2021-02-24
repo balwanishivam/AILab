@@ -1,0 +1,130 @@
+---
+title: "Week-5"
+author: "QuickFixDemos"
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+---
+Packages Used Installation
+```{r}
+# install.packages("e1071") 
+# install.packages("caTools") 
+# install.packages("caret") 
+# install.packages("bnlearn")
+```
+```{r}
+library(bnlearn)
+library(e1071) 
+library(caTools) 
+library(caret) 
+```
+Lab Assignment 5
+
+Learning Objective:
+Understand the graphical models for inference under uncertainty, build Bayesian Network in R, Learn the structure and CPTs from Data, naive Bayes classification with dependency between features. 
+Problem Statement:
+A table containing grades earned by students in respective courses is made available to you in (codes folder) 2020_bn_nb_data.txt. 
+Q1: Consider grades earned in each of the courses as random variables and learn the dependencies between courses. 
+##Solution
+```{r}
+dataset<-read.table("C:/Users/shiva/OneDrive/Desktop/Semester-6/AILab/Lab5/2020_bn_nb_data.txt",head=TRUE,stringsAsFactors=TRUE)
+dataset_grades=dataset
+dataset_net<-hc(dataset_grades,score="k2")
+dataset_net
+plot(dataset_net)
+```
+
+Q2: Using the data, learn the CPTs for each course node.
+```{r}
+dataset_net_bn_fit <- bn.fit(dataset_net, dataset_grades )
+print(dataset_net_bn_fit)
+```
+Q3: What grade will a student get in PH100 if he earns DD in EC100, CC in IT101 and CD in MA101.
+```{r}
+grade_list <- list("AA","AB","BB","BC","CC","CD","DD","F")
+probability <- 0.0
+result=""
+for(grade in grade_list) {
+  prob <- cpquery(dataset_net_bn_fit, event = (PH100== grade), evidence = (EC100=="DD" & IT101=="CC" & MA101=="CD"))
+  if(probability<prob){
+    probability=prob;
+    result=grade
+  }
+}
+sprintf("The max probability of resultant grade is %f",probability)
+sprintf("The max grade obtained with given ecidence is %s ",result)
+```
+Q4(a): The last column in the data file indicates whether a student qualifies for an internship program or not. From the given data, take 70 percent data for training and build a naive Bayes classifier (considering that the grades earned in different courses are independent of each other) which takes in the student’s performance and returns the qualification status with a probability. Test your classifier on the remaining 30 percent data. Repeat this experiment for 20 random selection of training and testing data. Report results about the accuracy of your classifier.
+```{r}
+dataset_grades=dataset
+split <- sample.split(dataset_grades, SplitRatio = 0.7) 
+train <- subset(dataset_grades, split == "TRUE") 
+test <- subset(dataset_grades, split == "FALSE") 
+naive_bayes_classifier<- naiveBayes(QP ~ ., data = train)
+y_train=predict(naive_bayes_classifier, newdata = train)
+y_prediction <- predict(naive_bayes_classifier, newdata = test)
+cm_train<- table(train$QP, y_train)
+accuracy_train = (cm_train[1,1]+cm_train[2,2])/sum(cm_train)
+print(round(cbind("Train Accuracy" =accuracy_train), 4))
+cm_test <- table(test$QP, y_prediction)
+accuracy_test = (cm_test[1,1]+cm_test[2,2])/sum(cm_test)
+print(round(cbind("Test Accuracy" =accuracy_test), 4))
+```
+Q4(b): Repeat this experiment for 20 random selection of training and testing data. Report results about the accuracy of your classifier.
+```{r}
+dataset_grades=dataset
+dataset_grades=dataset_grades[sample(nrow(dataset_grades), 20), ]
+split <- sample.split(dataset_grades, SplitRatio = 0.7) 
+train <- subset(dataset_grades, split == "TRUE") 
+test <- subset(dataset_grades, split == "FALSE")
+naive_bayes_classifier<- naiveBayes(QP ~ ., data = train)
+y_train=predict(naive_bayes_classifier, newdata = train)
+y_prediction <- predict(naive_bayes_classifier, newdata = test)
+cm_train<- table(train$QP, y_train)
+accuracy_train = (cm_train[1,1]+cm_train[2,2])/sum(cm_train)
+print(round(cbind("Train Accuracy" =accuracy_train), 4))
+cm_test <- table(test$QP, y_prediction)
+accuracy_test = (cm_test[1,1]+cm_test[2,2])/sum(cm_test)
+print(round(cbind("Test Accuracy" =accuracy_test), 4))
+```
+
+Q5(a): Repeat 4, considering that the grades earned in different courses may be dependent.
+```{r}
+dataset_grades=dataset
+split <- sample.split(dataset_grades, SplitRatio = 0.7)
+train <- subset(dataset_grades, split == "TRUE")
+test <- subset(dataset_grades, split == "FALSE")
+train.hc=suppressWarnings(hc(train, score="k2"))
+plot(train.hc)
+naive_bayes_classifier<- suppressWarnings(bn.fit(train.hc, train))
+y_train <- predict(naive_bayes_classifier,node="QP", data = train)
+y_prediction <- predict(naive_bayes_classifier,node="QP", data = test)
+cm_train<- table(train$QP, y_train)
+accuracy_train = (cm_train[1,1]+cm_train[2,2])/sum(cm_train)
+print(round(cbind("Train Accuracy" =accuracy_train), 4))
+cm_test <- table(test$QP, y_prediction)
+accuracy_test = (cm_test[1,1]+cm_test[2,2])/sum(cm_test)
+print(round(cbind("Test Accuracy" =accuracy_test), 4))
+
+```
+Q5(b): Repeat this experiment for 20 random selection of training and testing data. Report results about the accuracy of your classifier.
+```{r}
+dataset_grades=dataset
+dataset_grades=dataset_grades[sample(nrow(dataset_grades), 20), ]
+split <- sample.split(dataset_grades, SplitRatio = 0.7) 
+train <- subset(dataset_grades, split == "TRUE") 
+test <- subset(dataset_grades, split == "FALSE")
+train.hc=suppressWarnings(hc(train, score="k2"))
+plot(train.hc)
+naive_bayes_classifier<- suppressWarnings(bn.fit(train.hc, train))
+y_train <- predict(naive_bayes_classifier,node="QP", data = train)
+y_prediction <- predict(naive_bayes_classifier,node="QP", data = test)
+cm_train<- table(train$QP, y_train)
+accuracy_train = (cm_train[1,1]+cm_train[2,2])/sum(cm_train)
+print(round(cbind("Train Accuracy" =accuracy_train), 4))
+cm_test <- table(test$QP, y_prediction)
+accuracy_test = (cm_test[1,1]+cm_test[2,2])/sum(cm_test)
+print(round(cbind("Test Accuracy" =accuracy_test), 4))
+```

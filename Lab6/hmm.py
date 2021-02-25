@@ -250,6 +250,7 @@ if __name__ == "__main__":
     file.close()
 
     new_a, new_b, new_pi = hmm(a, b, pi, data)
+    print("\n")
     print("New PI=>", new_pi)
     print("New A=>", new_a)
     print("New B=>", new_b)

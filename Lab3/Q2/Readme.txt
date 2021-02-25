@@ -1,0 +1,1 @@
+Run these java files (eclipse recommended), here we have 2 files, q2_GlobalMembers is driver class and q2_Graph is Source class. We need to run the q2_GlobalMembers file and you can see desire output having 20 cities.

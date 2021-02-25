@@ -1,0 +1,1 @@
+Run these java files (eclipse recommended), here we have 2 files, q3_GlobalMembers is driver class and q3_Graph is Source class. We need to dwonload the dataset txt file, and provide location for it, run the q3_GlobalMembers file.

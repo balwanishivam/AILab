@@ -1,0 +1,1 @@
+Run these java files (eclipse recommended), here we have 2 files, q1_GlobalMembers is driver class and q1_Graph is Source class. We need to run the q1_GlobalMembers file and you can see desire output.
